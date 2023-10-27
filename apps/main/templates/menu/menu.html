@@ -1,0 +1,25 @@
+{% load menu_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opa</title>
+</head>
+<body>
+    {% draw_menu 'Главное меню' as menu_data %}
+
+{% if menu_data.menu %}
+  <ul>
+    {% for item in menu_data.menu.items.all %}
+      <li>
+        <a href="{{ item.slug }}">{{ item.title }}</a>
+      </li>
+      
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Меню не найдено</p>
+{% endif %}
+</body>
+</html>
